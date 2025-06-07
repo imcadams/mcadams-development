@@ -1,0 +1,30 @@
+{
+  "Changes": [
+    {
+      "Action": "DELETE",
+      "ResourceRecordSet": {
+        "Name": "_09fd09489134ecefeff82393f48d2c5d.mcadamsdevelopment.com.",
+        "Type": "CNAME",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "_5b0f183fefe0fb12d33a5ab89815a55a.xlfgrmvvlj.acm-validations.aws."
+          }
+        ]
+      }
+    },
+    {
+      "Action": "DELETE",
+      "ResourceRecordSet": {
+        "Name": "_bfba71351c61eb30e6784a99978289f4.www.mcadamsdevelopment.com.",
+        "Type": "CNAME",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "_ec293078b26f47639ed3f948d183130b.xlfgrmvvlj.acm-validations.aws."
+          }
+        ]
+      }
+    }
+  ]
+}

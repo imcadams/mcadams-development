@@ -19,7 +19,7 @@
 - React Router for navigation
 - React Hook Form for contact form
 - Optimized for AWS S3 static hosting
-- Being developed in a windows system
+- Being developed in a windows system so terminal commands need to be for powershell syntax
 
 ## Brand Guidelines
 - Primary: #1e40af (blue-700)

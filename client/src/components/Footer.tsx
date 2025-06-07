@@ -8,7 +8,7 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <p>Email: info@mcadamsdevelopment.com</p>
-            <p>Phone: (678) 900-8523</p>
+            <p>Phone: (470) 344-5563</p>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4">Services</h3>

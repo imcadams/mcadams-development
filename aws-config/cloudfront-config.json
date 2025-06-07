@@ -1,0 +1,74 @@
+{
+    "DistributionConfig": {
+        "CallerReference": "mcadams-development-2025-06-07",
+        "Aliases": {
+            "Quantity": 2,
+            "Items": ["mcadamsdevelopment.com", "www.mcadamsdevelopment.com"]
+        },
+        "DefaultRootObject": "index.html",
+        "Origins": {
+            "Quantity": 1,
+            "Items": [
+                {
+                    "Id": "S3-mcadamsdevelopment.com",
+                    "DomainName": "mcadamsdevelopment.com.s3-website-us-east-1.amazonaws.com",
+                    "CustomOriginConfig": {
+                        "HTTPPort": 80,
+                        "HTTPSPort": 443,
+                        "OriginProtocolPolicy": "http-only",
+                        "OriginSslProtocols": {
+                            "Quantity": 1,
+                            "Items": ["TLSv1.2"]
+                        }
+                    }
+                }
+            ]
+        },
+        "DefaultCacheBehavior": {
+            "TargetOriginId": "S3-mcadamsdevelopment.com",
+            "ViewerProtocolPolicy": "redirect-to-https",
+            "AllowedMethods": {
+                "Quantity": 2,
+                "Items": ["HEAD", "GET"],
+                "CachedMethods": {
+                    "Quantity": 2,
+                    "Items": ["HEAD", "GET"]
+                }
+            },
+            "MinTTL": 0,
+            "DefaultTTL": 86400,
+            "MaxTTL": 31536000,
+            "Compress": true,
+            "ForwardedValues": {
+                "QueryString": false,
+                "Cookies": {
+                    "Forward": "none"
+                }
+            }
+        },
+        "CustomErrorResponses": {
+            "Quantity": 2,
+            "Items": [
+                {
+                    "ErrorCode": 403,
+                    "ResponsePagePath": "/index.html",
+                    "ResponseCode": "200",
+                    "ErrorCachingMinTTL": 300
+                },
+                {
+                    "ErrorCode": 404,
+                    "ResponsePagePath": "/index.html",
+                    "ResponseCode": "200",
+                    "ErrorCachingMinTTL": 300
+                }
+            ]
+        },
+        "Comment": "McAdams Development Website",
+        "Enabled": true,
+        "ViewerCertificate": {
+            "ACMCertificateArn": "arn:aws:acm:us-east-1:957356740227:certificate/6f0c6881-f180-4131-bf41-6665f048bd75",
+            "SSLSupportMethod": "sni-only",
+            "MinimumProtocolVersion": "TLSv1.2_2021"
+        }
+    }
+}

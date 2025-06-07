@@ -182,8 +182,8 @@ export function Contact() {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium mb-2">Phone</h3>
-                    <a href="tel:+16789008523" className="text-primary hover:text-primary/80">
-                      (678) 900-8523
+                    <a href="tel:+14703445563" className="text-primary hover:text-primary/80">
+                      (470) 344-5563
                     </a>
                   </div>
                   <div>

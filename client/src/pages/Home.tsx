@@ -110,8 +110,8 @@ export function Home() {
           <div className="flex flex-col items-center gap-4 mb-8">
             <p className="text-lg">
               <span className="font-semibold">Call us:</span>{" "}
-              <a href="tel:+16789008523" className="text-primary hover:text-primary/80">
-                (678) 900-8523
+              <a href="tel:+14703445563" className="text-primary hover:text-primary/80">
+                (470) 344-5563
               </a>
             </p>
             <p className="text-lg">

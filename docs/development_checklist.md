@@ -15,11 +15,11 @@
 - [ ] Cross-browser compatibility check
 
 ## Phase 1C: Deploy (1 hour)
-- [ ] AWS S3 bucket configuration
-- [ ] Build and deploy to S3
-- [ ] Domain setup (mcadamsdevelopment.com)
-- [ ] SSL certificate configuration
-- [ ] Final testing on live site
+- [x] AWS S3 bucket configuration
+- [x] Build and deploy to S3
+- [x] Domain setup (mcadamsdevelopment.com)
+- [x] SSL certificate configuration
+- [x] Final testing on live site
 
 ## Quality Check
 - [ ] All pages load under 3 seconds
