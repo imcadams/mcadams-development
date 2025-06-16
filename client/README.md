@@ -52,3 +52,30 @@ export default tseslint.config({
   },
 })
 ```
+
+## Environment Variables
+
+This project uses Vite, which supports environment variables loaded from `.env` files. To manage API keys or other sensitive information, you can create a `.env` file in the root of the `client` directory.
+
+For example, to set the API key for the email service, create a file named `.env` in the `e:\Dev\mcadams-development\client\` directory and add the following line:
+
+```
+VITE_EMAIL_API_KEY=your_actual_api_key_here
+```
+
+Replace `your_actual_api_key_here` with your actual API key.
+
+**Important:** Ensure that `.env` files are listed in your `.gitignore` file to prevent them from being committed to your version control system. The provided `.gitignore` file already includes entries for `.env` and `.env.*`.
+
+Environment variables prefixed with `VITE_` are exposed to your client-side code via `import.meta.env`. For TypeScript type safety, you can define these variables in `src/vite-env.d.ts`:
+
+```typescript
+interface ImportMetaEnv {
+  readonly VITE_EMAIL_API_KEY: string;
+  // add other environment variables here as needed
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+```

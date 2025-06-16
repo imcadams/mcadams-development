@@ -8,7 +8,7 @@ const contactSchema = z.object({
   phone: z.string().min(10, 'Phone number must be at least 10 digits'),
   serviceInterest: z.enum(['website', 'webapp', 'mobile', 'cloud', 'devops', 'design']),
   budget: z.enum(['under5k', '5k-15k', '15k-25k', '25k-50k', '50kplus']),
-  description: z.string().min(10, 'Project description must be at least 10 characters'),
+  description: z.string().min(10, 'Project description must be at least 10 characters').max(10000, 'Project description must be 10,000 characters or less'),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -25,11 +25,38 @@ export function Contact() {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      // TODO: Implement form submission
+      const MAX_SUBJECT_LENGTH = 256;
+      let subject = `Contact Form: ${data.name} - Service: ${data.serviceInterest}`;
+      if (subject.length > MAX_SUBJECT_LENGTH) {
+        subject = subject.substring(0, MAX_SUBJECT_LENGTH);
+      }
+
+      const emailRequestBody = {
+        to: ["info@mcadamsdevelopment.com"],
+        subject: subject,
+        body: data.description, // Use description from form data as body
+      };
+
+      // TODO: Replace with your actual API endpoint
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': import.meta.env.VITE_EMAIL_API_KEY,
+        },
+        body: JSON.stringify(emailRequestBody),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
       console.log('Form data:', data);
+      console.log('Email request body:', emailRequestBody);
       reset();
       alert('Thank you! We will contact you within 24 hours.');
     } catch (error) {
+      console.error('Submission error:', error);
       alert('An error occurred. Please try again.');
     }
   };
