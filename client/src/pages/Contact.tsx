@@ -37,8 +37,9 @@ export function Contact() {
         body: data.description, // Use description from form data as body
       };
 
-      // TODO: Replace with your actual API endpoint
-      const response = await fetch('/api/send-email', {
+      // Use VITE_API_URL for the fetch request
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const response = await fetch(`${apiUrl}/email`, { // Corrected to use /email endpoint
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,8 +52,6 @@ export function Contact() {
         throw new Error('Failed to send message');
       }
 
-      console.log('Form data:', data);
-      console.log('Email request body:', emailRequestBody);
       reset();
       alert('Thank you! We will contact you within 24 hours.');
     } catch (error) {
