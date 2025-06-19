@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 interface ServiceFeature {
   title: string;
@@ -113,49 +114,57 @@ export function Services() {
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-blue-900 text-white py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Our Development Services
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-100">
-              Expert solutions tailored to your business needs
+    <>
+      <SEO 
+        title="Services"
+        description="Expert web development services including custom websites, web applications, mobile apps, cloud migration, DevOps consulting, and UI/UX design."
+        canonicalUrl="https://www.mcadamsdevelopment.com/services"
+        schemaType="Service"
+      />
+      <div className="min-h-screen">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-r from-primary to-blue-900 text-white py-16 md:py-24">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                Our Development Services
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-100">
+                Expert solutions tailored to your business needs
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Services Grid */}
+        <section className="py-16 md:py-24 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service, index) => (
+                <DetailedServiceCard key={index} {...service} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Bottom CTA */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              Let's discuss how our services can help you achieve your goals.
             </p>
+            <Link
+              to="/contact"
+              className="btn btn-primary inline-block px-8 py-3 text-lg"
+            >
+              Schedule a Free Consultation
+            </Link>
           </div>
-        </div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <DetailedServiceCard key={index} {...service} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Bottom CTA */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Let's discuss how our services can help you achieve your goals.
-          </p>
-          <Link
-            to="/contact"
-            className="btn btn-primary inline-block px-8 py-3 text-lg"
-          >
-            Schedule a Free Consultation
-          </Link>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 }
