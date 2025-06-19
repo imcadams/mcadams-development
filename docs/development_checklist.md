@@ -21,6 +21,10 @@
 - [x] SSL certificate configuration
 - [x] Final testing on live site
 
+## Legal
+- [x] Add Privacy Policy page
+- [ ] Add Cookie Policy
+
 ## Quality Check
 - [ ] All pages load under 3 seconds
 - [ ] Contact form submits successfully

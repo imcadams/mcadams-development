@@ -27,7 +27,8 @@ export function Footer() {
           </div> */}
         </div>
         <div className="mt-8 text-center border-t border-gray-700 pt-8">
-          <p>&copy; {new Date().getFullYear()} McAdams Development. All rights reserved.</p>
+          <p className="mb-2">&copy; {new Date().getFullYear()} McAdams Development. All rights reserved.</p>
+          <Link to="/privacy-policy" className="text-sm text-gray-400 hover:text-white">Privacy Policy</Link>
         </div>
       </div>
     </footer>
