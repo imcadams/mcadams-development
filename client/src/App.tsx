@@ -1,14 +1,15 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
 import { Home } from './pages/Home';
 import { Services } from './pages/Services';
 import { Contact } from './pages/Contact';
+import { NotFound } from './pages/NotFound';
 import { ScrollToTop } from './components/ScrollToTop';
 import './App.css'
 
 function App() {
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <MainLayout>
         <Routes>
@@ -16,9 +17,11 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          {/* 404 route - must be last */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </MainLayout>
-    </Router>
+    </>
   )
 }
 

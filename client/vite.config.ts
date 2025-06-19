@@ -1,5 +1,5 @@
 import { defineConfig, loadEnv } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-swc'
 import sitemap from 'vite-plugin-sitemap'
 
 // https://vite.dev/config/
@@ -10,7 +10,19 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
   return {
-    plugins: [react(), sitemap({ hostname: 'https://www.mcadamsdevelopment.com' })],
+    plugins: [
+      react(), 
+      sitemap({
+        hostname: 'https://www.mcadamsdevelopment.com',
+        outDir: 'public',
+        robots: [
+          {
+            userAgent: '*',
+            allow: '/',
+          },
+        ],
+      }),
+    ],
     server: {
       proxy: {
         '/api': {
@@ -20,6 +32,20 @@ export default defineConfig(({ mode }) => {
           rewrite: (path) => path.replace(/^\/api/, ''),
         },
       },
+    },
+    preview: {
+      // Add this configuration for the preview server to handle client-side routing
+      port: 5173, // Use the same port as dev for consistency
+      strictPort: true,
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+      },
+    },
+    build: {
+      // Generate manifest.json in outDir
+      manifest: true,
+      outDir: 'dist',
+      emptyOutDir: true
     },
   }
 })
