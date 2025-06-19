@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
 import { Home } from './pages/Home';
+import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Contact } from './pages/Contact';
 import { NotFound } from './pages/NotFound';
@@ -23,16 +24,6 @@ function App() {
       </MainLayout>
     </>
   )
-}
-
-// Temporary page components - will move to separate files
-function About() {
-  return (
-    <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-8">About Us</h1>
-      <p className="text-xl text-gray-600">Learn about our company and mission</p>
-    </div>
-  );
 }
 
 export default App

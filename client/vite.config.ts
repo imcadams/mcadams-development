@@ -15,6 +15,12 @@ export default defineConfig(({ mode }) => {
       sitemap({
         hostname: 'https://www.mcadamsdevelopment.com',
         outDir: 'public',
+        dynamicRoutes: [
+          '/',
+          '/about',
+          '/services',
+          '/contact',
+        ],
         robots: [
           {
             userAgent: '*',
