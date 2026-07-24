@@ -36,7 +36,6 @@ export interface SolutionContent {
   steps: SolutionStep[];
   faqs: SolutionFaq[];
 }
-
 export interface SitePage {
   path: string;
   title: string;
@@ -69,7 +68,6 @@ export function getSolutionPage(slug: string | undefined): SolutionPage | undefi
 
   return page;
 }
-
 export function absoluteUrl(path: string): string {
   return new URL(path, SITE_ORIGIN).toString();
 }

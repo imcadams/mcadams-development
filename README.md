@@ -93,7 +93,6 @@ VITE_TURNSTILE_SITE_KEY=your-public-turnstile-site-key
 Turnstile secret, or other server credential in a `VITE_` variable. See
 [the contact implementation plan](docs/hvac-landing-page-and-contact-spam-plan.md)
 for the required backend validation and deployment sequence.
-
 ## AWS deployment
 
 GitHub Actions verifies each change and deploys pushes to `master` using GitHub

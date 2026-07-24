@@ -25,7 +25,6 @@ function breadcrumbSchema(page: SitePage) {
     })),
   };
 }
-
 function organizationSchema() {
   return {
     '@type': 'Organization',

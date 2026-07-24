@@ -12,7 +12,6 @@ validate the request, verify the Turnstile token with Cloudflare server-side,
 rate-limit abuse, and construct the email recipient and subject from trusted
 server-side configuration. See `docs/hvac-landing-page-and-contact-spam-plan.md`
 for the complete contract and rollout sequence.
-
 ## Required distribution changes
 
 1. Create or reuse a CloudFront Function from `cloudfront-function.js` and
