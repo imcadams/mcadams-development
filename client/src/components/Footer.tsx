@@ -16,6 +16,7 @@ export function Footer() {
               <li><Link to="/services#web" className="hover:text-gray-300">Website Development</Link></li>
               <li><Link to="/services#app" className="hover:text-gray-300">Web Application Development</Link></li>
               <li><Link to="/services#mobile" className="hover:text-gray-300">Mobile App Development</Link></li>
+              <li><Link to="/solutions/hvac-ai-receptionist" className="hover:text-gray-300">HVAC AI Receptionist</Link></li>
             </ul>
           </div>
           {/* <div>

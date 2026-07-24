@@ -21,6 +21,68 @@
     "lastModified": "2026-07-24"
   },
   {
+    "path": "/solutions/hvac-ai-receptionist",
+    "title": "HVAC AI Receptionist",
+    "description": "Explore a tailored AI receptionist solution for HVAC businesses that want a more responsive first point of contact.",
+    "type": "WebPage",
+    "lastModified": "2026-07-24",
+    "solution": {
+      "slug": "hvac-ai-receptionist",
+      "eyebrow": "Built for HVAC businesses",
+      "heroTitle": "Give every HVAC customer a responsive first point of contact",
+      "heroDescription": "An AI receptionist can help your business handle incoming inquiries when your team is busy serving customers, on a job, or outside regular office hours.",
+      "audience": "HVAC contractors and service teams that want a more consistent way to capture and route new customer inquiries.",
+      "benefits": [
+        {
+          "title": "A more responsive first impression",
+          "description": "Give prospective customers a clear next step when they reach out to your business."
+        },
+        {
+          "title": "Support for busy field teams",
+          "description": "Help keep inquiries moving while technicians and office staff focus on the work already in front of them."
+        },
+        {
+          "title": "A solution shaped around your workflow",
+          "description": "Start with the questions, routing rules, and follow-up process that make sense for your HVAC operation."
+        }
+      ],
+      "capabilities": [
+        "Capture caller or web inquiry details for follow-up.",
+        "Answer approved, frequently asked questions about your business.",
+        "Route urgent or specialized inquiries according to your preferred process.",
+        "Create a consistent handoff for your office or service team."
+      ],
+      "steps": [
+        {
+          "title": "Map the customer journey",
+          "description": "We identify the questions, service categories, and handoff points that matter to your team."
+        },
+        {
+          "title": "Configure the experience",
+          "description": "The receptionist experience is tailored to your approved information and operational preferences."
+        },
+        {
+          "title": "Refine with your team",
+          "description": "Review the flow, improve the handoff, and keep the experience aligned with your business."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Can an AI receptionist be tailored to our HVAC business?",
+          "answer": "Yes. The implementation begins with your approved services, common customer questions, and preferred routing process so the experience reflects your business."
+        },
+        {
+          "question": "Will it replace our office staff?",
+          "answer": "The goal is to support your team with a more consistent first response and handoff. Your business controls when and how inquiries are routed to people."
+        },
+        {
+          "question": "Can we discuss our current call and inquiry process first?",
+          "answer": "Yes. A consultation is the right place to review your workflow, priorities, and the kind of customer experience you want to create."
+        }
+      ]
+    }
+  },
+  {
     "path": "/contact",
     "title": "Contact McAdams Development",
     "description": "Contact McAdams Development for a consultation about your website, web application, or software project.",

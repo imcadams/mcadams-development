@@ -7,6 +7,25 @@ import {
   type SitePage,
 } from './site';
 
+function breadcrumbSchema(page: SitePage) {
+  const items = [
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services' },
+    { name: page.title, path: page.path },
+  ];
+
+  return {
+    '@type': 'BreadcrumbList',
+    '@id': `${absoluteUrl(page.path)}#breadcrumb`,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  };
+}
+
 function organizationSchema() {
   return {
     '@type': 'Organization',
@@ -26,27 +45,60 @@ function organizationSchema() {
 export function pageMeta(page: SitePage): MetaDescriptor[] {
   const url = absoluteUrl(page.path);
   const title = `${page.title} | ${SITE_NAME}`;
+  const graph: Record<string, unknown>[] = [
+    organizationSchema(),
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_ORIGIN}/#website`,
+      name: SITE_NAME,
+      url: SITE_ORIGIN,
+      publisher: { '@id': `${SITE_ORIGIN}/#organization` },
+    },
+    {
+      '@type': page.type,
+      '@id': `${url}#webpage`,
+      name: title,
+      description: page.description,
+      url,
+      isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+      about: { '@id': `${SITE_ORIGIN}/#organization` },
+    },
+  ];
+
+  if (page.solution) {
+    graph.push(
+      breadcrumbSchema(page),
+      {
+        '@type': 'Service',
+        '@id': `${url}#service`,
+        name: page.title,
+        description: page.description,
+        serviceType: 'HVAC AI receptionist',
+        provider: { '@id': `${SITE_ORIGIN}/#organization` },
+        audience: {
+          '@type': 'BusinessAudience',
+          audienceType: 'HVAC businesses',
+        },
+        url,
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${url}#faq`,
+        mainEntity: page.solution.faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+          },
+        })),
+      },
+    );
+  }
+
   const schema = {
     '@context': 'https://schema.org',
-    '@graph': [
-      organizationSchema(),
-      {
-        '@type': 'WebSite',
-        '@id': `${SITE_ORIGIN}/#website`,
-        name: SITE_NAME,
-        url: SITE_ORIGIN,
-        publisher: { '@id': `${SITE_ORIGIN}/#organization` },
-      },
-      {
-        '@type': page.type,
-        '@id': `${url}#webpage`,
-        name: title,
-        description: page.description,
-        url,
-        isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
-        about: { '@id': `${SITE_ORIGIN}/#organization` },
-      },
-    ],
+    '@graph': graph,
   };
 
   return [

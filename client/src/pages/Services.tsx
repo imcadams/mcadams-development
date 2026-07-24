@@ -140,6 +140,25 @@ export function Services() {
         </section>
 
         {/* Bottom CTA */}
+        <section className="py-16 bg-blue-50">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-4xl rounded-xl bg-white p-8 shadow-sm ring-1 ring-blue-100 md:flex md:items-center md:justify-between md:gap-8">
+              <div>
+                <p className="mb-2 font-semibold text-primary">HVAC solution</p>
+                <h2 className="mb-3 text-2xl font-bold">Explore an AI receptionist tailored to HVAC businesses</h2>
+                <p className="text-gray-600">Create a more consistent first response and handoff for new customer inquiries.</p>
+              </div>
+              <Link
+                to="/solutions/hvac-ai-receptionist"
+                className="btn btn-primary mt-6 inline-block whitespace-nowrap md:mt-0"
+              >
+                View HVAC solution
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Bottom CTA */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">

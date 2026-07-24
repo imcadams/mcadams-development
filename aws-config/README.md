@@ -3,6 +3,16 @@
 The React Router static build is written to `client/build/client` and should be
 served by CloudFront from S3.
 
+## Contact form boundary
+
+The static site submits contact requests to a separately deployed, backend-owned
+`POST /contact` endpoint. Do not place email-provider credentials or Turnstile
+secret keys in S3, CloudFront, or `VITE_` frontend variables. The endpoint must
+validate the request, verify the Turnstile token with Cloudflare server-side,
+rate-limit abuse, and construct the email recipient and subject from trusted
+server-side configuration. See `docs/hvac-landing-page-and-contact-spam-plan.md`
+for the complete contract and rollout sequence.
+
 ## Required distribution changes
 
 1. Create or reuse a CloudFront Function from `cloudfront-function.js` and

@@ -40,6 +40,7 @@ build/client/
 ├── about/index.html
 ├── services/index.html
 ├── contact/index.html
+├── solutions/hvac-ai-receptionist/index.html
 ├── privacy-policy/index.html
 ├── assets/
 ├── robots.txt
@@ -75,19 +76,43 @@ Solution pages, blog articles, and case studies should follow this workflow.
 When content becomes numerous, add a content-derived route enumerator rather
 than introducing another manually maintained route list.
 
+## Contact form configuration
+
+The contact form uses Cloudflare Turnstile and submits to a backend-owned
+`POST /contact` endpoint. The browser receives only the Turnstile site key;
+the Turnstile secret and email credentials must remain in the backend.
+
+Frontend environment variables:
+
+```text
+VITE_CONTACT_API_URL=https://contact-api.example.com
+VITE_TURNSTILE_SITE_KEY=your-public-turnstile-site-key
+```
+
+`VITE_` values are public browser configuration. Never put an email API key,
+Turnstile secret, or other server credential in a `VITE_` variable. See
+[the contact implementation plan](docs/hvac-landing-page-and-contact-spam-plan.md)
+for the required backend validation and deployment sequence.
+
 ## AWS deployment
 
-GitHub Actions verifies each change and can deploy from `master`. Configure the
-following GitHub secrets before enabling production deployment:
+GitHub Actions verifies each change and deploys pushes to `master` using GitHub
+OIDC. It does not use stored AWS access keys, GitHub secrets, or GitHub Actions
+variables. The non-sensitive deployment identifiers (region, role ARN, S3
+bucket, and CloudFront distribution ID) are committed in
+`.github/workflows/deploy.yml`.
 
-- `AWS_DEPLOY_ROLE_ARN`
-- `AWS_S3_BUCKET`
-- `AWS_CLOUDFRONT_DISTRIBUTION_ID`
+The production job can assume only
+`GitHubActionsMcAdamsDevelopmentDeploy`. Its trust policy limits access to this
+repository's `production` environment; its inline permissions are limited to
+deploying `mcadamsdevelopment.com` and invalidating the site's CloudFront
+distribution. The checked-in policy documents are:
 
-The role must use GitHub OIDC and be limited to the target bucket and
-distribution. See [AWS deployment notes](aws-config/README.md) for the required
-CloudFront Function, private-origin migration, cache policy, and real-404
-configuration.
+- [OIDC trust policy](aws-config/github-actions-oidc-trust-policy.json)
+- [deployment permissions policy](aws-config/github-actions-deploy-policy.json)
+
+See [AWS deployment notes](aws-config/README.md) for the required CloudFront
+Function, private-origin migration, cache policy, and real-404 configuration.
 
 ## Cache behavior
 

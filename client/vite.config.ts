@@ -15,8 +15,7 @@ export default defineConfig(({ mode }) => {
     server: {
       proxy: {
         '/api': {
-          // Use the loaded environment variable
-          target: env.VITE_API_URL,
+          target: env.VITE_CONTACT_API_URL ?? env.VITE_API_URL,
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ''),
         },
