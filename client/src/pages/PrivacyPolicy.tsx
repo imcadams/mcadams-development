@@ -1,15 +1,7 @@
-import { SEO } from '../components/SEO';
 
 export function PrivacyPolicy() {
   return (
-    <>
-      <SEO
-        title="Privacy Policy | McAdams Development"
-        description="Understand how McAdams Development collects, uses, and protects your personal data. Your privacy is important to us."
-        canonicalUrl="https://www.mcadamsdevelopment.com/privacy-policy"
-        schemaType="WebPage"
-      />
-      <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-center mb-4">Privacy Policy</h1>
         <p className="text-lg text-center text-gray-600 mb-8">Last Updated: June 19, 2025</p>
 
@@ -66,7 +58,6 @@ export function PrivacyPolicy() {
             </p>
           </div>
         </div>
-      </div>
-    </>
+    </div>
   );
 }

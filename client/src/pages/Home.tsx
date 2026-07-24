@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { SEO } from '../components/SEO';
 
 interface ServiceCardProps {
   title: string;
@@ -60,14 +59,7 @@ export function Home() {
   ];
 
   return (
-    <>
-      <SEO 
-        title="Home"
-        description="McAdams Development creates custom web solutions that help businesses thrive in the digital landscape. From simple websites to complex applications."
-        canonicalUrl="https://www.mcadamsdevelopment.com/"
-        schemaType="WebPage"
-      />
-      <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen">
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-primary to-blue-900 text-white py-20 lg:py-32">
           <div className="container mx-auto px-4">
@@ -199,7 +191,6 @@ export function Home() {
             </Link>
           </div>
         </section>
-      </div>
-    </>
+    </div>
   );
 }

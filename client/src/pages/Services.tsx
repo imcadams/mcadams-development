@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { SEO } from '../components/SEO';
 
 interface ServiceFeature {
   title: string;
@@ -114,14 +113,7 @@ export function Services() {
   ];
 
   return (
-    <>
-      <SEO 
-        title="Services"
-        description="Expert web development services including custom websites, web applications, mobile apps, cloud migration, DevOps consulting, and UI/UX design."
-        canonicalUrl="https://www.mcadamsdevelopment.com/services"
-        schemaType="Service"
-      />
-      <div className="min-h-screen">
+    <div className="min-h-screen">
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-primary to-blue-900 text-white py-16 md:py-24">
           <div className="container mx-auto px-4">
@@ -164,7 +156,6 @@ export function Services() {
             </Link>
           </div>
         </section>
-      </div>
-    </>
+    </div>
   );
 }
