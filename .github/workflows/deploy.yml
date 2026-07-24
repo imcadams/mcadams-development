@@ -17,6 +17,7 @@ jobs:
       AWS_REGION: us-east-1
       AWS_DEPLOY_ROLE_ARN: arn:aws:iam::957356740227:role/GitHubActionsMcAdamsDevelopmentDeploy
       AWS_S3_BUCKET: mcadamsdevelopment.com
+      AWS_CLOUDFRONT_DISTRIBUTION_ID: E98W2XOCHJ9W5
     defaults:
       run:
         working-directory: client
