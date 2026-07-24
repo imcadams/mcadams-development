@@ -77,17 +77,23 @@ than introducing another manually maintained route list.
 
 ## AWS deployment
 
-GitHub Actions verifies each change and can deploy from `master`. Configure the
-following GitHub secrets before enabling production deployment:
+GitHub Actions verifies each change and deploys pushes to `master` using GitHub
+OIDC. It does not use stored AWS access keys, GitHub secrets, or GitHub Actions
+variables. The non-sensitive deployment identifiers (region, role ARN, S3
+bucket, and CloudFront distribution ID) are committed in
+`.github/workflows/deploy.yml`.
 
-- `AWS_DEPLOY_ROLE_ARN`
-- `AWS_S3_BUCKET`
-- `AWS_CLOUDFRONT_DISTRIBUTION_ID`
+The production job can assume only
+`GitHubActionsMcAdamsDevelopmentDeploy`. Its trust policy limits access to this
+repository's `production` environment; its inline permissions are limited to
+deploying `mcadamsdevelopment.com` and invalidating the site's CloudFront
+distribution. The checked-in policy documents are:
 
-The role must use GitHub OIDC and be limited to the target bucket and
-distribution. See [AWS deployment notes](aws-config/README.md) for the required
-CloudFront Function, private-origin migration, cache policy, and real-404
-configuration.
+- [OIDC trust policy](aws-config/github-actions-oidc-trust-policy.json)
+- [deployment permissions policy](aws-config/github-actions-deploy-policy.json)
+
+See [AWS deployment notes](aws-config/README.md) for the required CloudFront
+Function, private-origin migration, cache policy, and real-404 configuration.
 
 ## Cache behavior
 
