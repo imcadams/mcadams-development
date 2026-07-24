@@ -1,8 +1,9 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly VITE_EMAIL_API_KEY: string;
-  // add other environment variables here as needed
+  readonly VITE_API_URL?: string;
+  readonly VITE_CONTACT_API_URL?: string;
+  readonly VITE_TURNSTILE_SITE_KEY?: string;
 }
 
 interface ImportMeta {

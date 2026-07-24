@@ -3,7 +3,7 @@ export function PrivacyPolicy() {
   return (
     <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-center mb-4">Privacy Policy</h1>
-        <p className="text-lg text-center text-gray-600 mb-8">Last Updated: June 19, 2025</p>
+        <p className="text-lg text-center text-gray-600 mb-8">Last Updated: July 24, 2026</p>
 
         <div className="space-y-8 text-gray-700">
           <p>
@@ -49,6 +49,13 @@ export function PrivacyPolicy() {
               <li>To monitor the usage of the Service</li>
               <li>To detect, prevent and address technical issues</li>
             </ul>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-semibold mb-2">Contact Form Security</h2>
+            <p>
+              To help prevent spam and abuse, our contact form uses Cloudflare Turnstile. Turnstile may process technical information needed to determine whether a form submission is legitimate. We use the result only to protect the form and do not use it to make automated decisions about you.
+            </p>
           </div>
 
           <div>

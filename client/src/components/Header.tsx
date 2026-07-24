@@ -10,6 +10,7 @@ export function Header() {
             <Link to="/" className="hover:text-gray-200">Home</Link>
             <Link to="/about" className="hover:text-gray-200">About</Link>
             <Link to="/services" className="hover:text-gray-200">Services</Link>
+            <Link to="/solutions/hvac-ai-receptionist" className="hover:text-gray-200">AI Receptionist</Link>
             <Link to="/contact" className="hover:text-gray-200">Contact</Link>
           </div>
         </div>

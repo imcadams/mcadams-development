@@ -106,16 +106,6 @@ export function Home() {
                   Whether you need a simple website, a complex web application, or cloud migration services,
                   we have the skills and experience to exceed your expectations.
                 </p>
-                <div className="grid grid-cols-2 gap-4 mt-8">
-                  <div className="border border-gray-200 p-4 rounded-lg text-center">
-                    <div className="text-primary text-2xl font-bold">50+</div>
-                    <div className="text-gray-600">Projects Completed</div>
-                  </div>
-                  <div className="border border-gray-200 p-4 rounded-lg text-center">
-                    <div className="text-primary text-2xl font-bold">97%</div>
-                    <div className="text-gray-600">Client Satisfaction</div>
-                  </div>
-                </div>
               </div>
               <div className="bg-gray-100 p-8 rounded-lg">
                 <h3 className="text-2xl font-semibold mb-4">Why Choose Us</h3>

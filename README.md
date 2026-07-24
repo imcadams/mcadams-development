@@ -40,6 +40,7 @@ build/client/
 ├── about/index.html
 ├── services/index.html
 ├── contact/index.html
+├── solutions/hvac-ai-receptionist/index.html
 ├── privacy-policy/index.html
 ├── assets/
 ├── robots.txt
@@ -75,6 +76,23 @@ Solution pages, blog articles, and case studies should follow this workflow.
 When content becomes numerous, add a content-derived route enumerator rather
 than introducing another manually maintained route list.
 
+## Contact form configuration
+
+The contact form uses Cloudflare Turnstile and submits to a backend-owned
+`POST /contact` endpoint. The browser receives only the Turnstile site key;
+the Turnstile secret and email credentials must remain in the backend.
+
+Frontend environment variables:
+
+```text
+VITE_CONTACT_API_URL=https://contact-api.example.com
+VITE_TURNSTILE_SITE_KEY=your-public-turnstile-site-key
+```
+
+`VITE_` values are public browser configuration. Never put an email API key,
+Turnstile secret, or other server credential in a `VITE_` variable. See
+[the contact implementation plan](docs/hvac-landing-page-and-contact-spam-plan.md)
+for the required backend validation and deployment sequence.
 ## AWS deployment
 
 GitHub Actions verifies each change and deploys pushes to `master` using GitHub
