@@ -1,5 +1,12 @@
 {
-  "devDependencies": {
-    "vite-plugin-sitemap": "^0.8.2"
+  "name": "mcadams-development",
+  "private": true,
+  "workspaces": [
+    "client"
+  ],
+  "scripts": {
+    "dev": "npm --workspace client run dev",
+    "build": "npm --workspace client run build",
+    "check": "npm --workspace client run check"
   }
 }

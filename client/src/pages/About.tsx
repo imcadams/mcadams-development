@@ -1,15 +1,7 @@
-import { SEO } from '../components/SEO';
 
 export function About() {
   return (
-    <>
-      <SEO
-        title="About McAdams Development | Our Story, Mission, and Values"
-        description="Learn about McAdams Development, a passionate team of web developers dedicated to creating high-quality, innovative, and effective web solutions for businesses of all sizes."
-        canonicalUrl='https://www.mcadamsdevelopment.com/about'
-        schemaType="AboutPage"
-      />
-      <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-center mb-4">About Us</h1>
         <p className="text-lg text-center text-gray-600 mb-8">Our Story, Mission, and Values</p>
 
@@ -38,7 +30,6 @@ export function About() {
             </ul>
           </div>
         </div>
-      </div>
-    </>
+    </div>
   );
 }
