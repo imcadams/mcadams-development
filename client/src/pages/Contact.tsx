@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { SEO } from '../components/SEO';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -62,14 +61,7 @@ export function Contact() {
   };
 
   return (
-    <>
-      <SEO 
-        title="Contact Us"
-        description="Get in touch with McAdams Development for custom software solutions. Contact us for a free consultation about your web development project."
-        canonicalUrl="https://www.mcadamsdevelopment.com/contact"
-        schemaType="ContactPage"
-      />
-      <div className="min-h-screen">
+    <div className="min-h-screen">
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-primary to-blue-900 text-white py-16">
           <div className="container mx-auto px-4">
@@ -241,7 +233,6 @@ export function Contact() {
             </div>
           </div>
         </section>
-      </div>
-    </>
+    </div>
   );
 }

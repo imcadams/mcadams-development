@@ -1,0 +1,37 @@
+[
+  {
+    "path": "/",
+    "title": "Custom Software Development Solutions",
+    "description": "McAdams Development creates custom web solutions that help businesses thrive, from high-converting websites to complex web applications.",
+    "type": "WebPage",
+    "lastModified": "2026-07-24"
+  },
+  {
+    "path": "/about",
+    "title": "About McAdams Development",
+    "description": "Learn about McAdams Development, a team dedicated to creating high-quality, innovative, and effective web solutions.",
+    "type": "AboutPage",
+    "lastModified": "2026-07-24"
+  },
+  {
+    "path": "/services",
+    "title": "Software Development Services",
+    "description": "Explore McAdams Development's custom website, web application, mobile app, cloud, DevOps, and UI/UX services.",
+    "type": "Service",
+    "lastModified": "2026-07-24"
+  },
+  {
+    "path": "/contact",
+    "title": "Contact McAdams Development",
+    "description": "Contact McAdams Development for a consultation about your website, web application, or software project.",
+    "type": "ContactPage",
+    "lastModified": "2026-07-24"
+  },
+  {
+    "path": "/privacy-policy",
+    "title": "Privacy Policy",
+    "description": "Understand how McAdams Development collects, uses, and protects personal data.",
+    "type": "WebPage",
+    "lastModified": "2025-06-19"
+  }
+]

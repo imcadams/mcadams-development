@@ -1,6 +1,5 @@
 import { defineConfig, loadEnv } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import sitemap from 'vite-plugin-sitemap'
+import { reactRouter } from '@react-router/dev/vite'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -11,23 +10,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
-      react(), 
-      sitemap({
-        hostname: 'https://www.mcadamsdevelopment.com',
-        outDir: 'public',
-        dynamicRoutes: [
-          '/',
-          '/about',
-          '/services',
-          '/contact',
-        ],
-        robots: [
-          {
-            userAgent: '*',
-            allow: '/',
-          },
-        ],
-      }),
+      reactRouter(),
     ],
     server: {
       proxy: {
@@ -38,20 +21,6 @@ export default defineConfig(({ mode }) => {
           rewrite: (path) => path.replace(/^\/api/, ''),
         },
       },
-    },
-    preview: {
-      // Add this configuration for the preview server to handle client-side routing
-      port: 5173, // Use the same port as dev for consistency
-      strictPort: true,
-      headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-      },
-    },
-    build: {
-      // Generate manifest.json in outDir
-      manifest: true,
-      outDir: 'dist',
-      emptyOutDir: true
     },
   }
 })
