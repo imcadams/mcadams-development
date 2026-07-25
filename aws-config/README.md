@@ -14,8 +14,9 @@ server-side configuration. See `docs/hvac-landing-page-and-contact-spam-plan.md`
 for the complete contract and rollout sequence.
 ## Required distribution changes
 
-1. Create or reuse a CloudFront Function from `cloudfront-function.js` and
-   associate it with the viewer-request event on the default behavior.
+1. Publish `cloudfront-function.js` as the `mcadams-development-canonical-host`
+   CloudFront Function and associate its `LIVE` version with the viewer-request
+   event on the default behavior.
 2. Set `www.mcadamsdevelopment.com` as the canonical host in the function.
 3. Change the origin from the S3 website endpoint to the bucket REST endpoint.
 4. Create an Origin Access Control, attach it to that origin, and block all
@@ -28,8 +29,11 @@ for the complete contract and rollout sequence.
    policy after validating it in report-only mode.
 
 The function maps `/about` to `/about/index.html`, redirects the apex hostname
-to `www`, and normalizes trailing slashes. It deliberately does not map unknown
-routes to the home page; S3/CloudFront can return a real 404 for them.
+to `www` while preserving the path and query string, and normalizes trailing
+slashes. It deliberately does not map unknown routes to the home page;
+S3/CloudFront can return a real 404 for them. The normal static-site deployment
+workflow only uploads site assets and invalidates CloudFront; publish or update
+this function as a separate CloudFront infrastructure operation.
 
 ## Cache headers
 
