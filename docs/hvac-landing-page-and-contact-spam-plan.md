@@ -17,6 +17,33 @@ The contact API is implemented in the separate `imcadams/email-service`
 repository. Frontend changes must be deployed only after its secure
 `POST /contact` endpoint is available.
 
+## Implementation status — July 2026
+
+The target architecture in this document is deployed. The HVAC AI receptionist
+route is statically prerendered and included in the generated metadata,
+sitemap, and `llms.txt` workflows. The Contact page sends its public payload,
+Turnstile token, honeypot, and elapsed-time signal to the separate
+`imcadams/email-service` backend.
+
+That backend now provides public `POST /contact`, enforces the bounded request
+schema and 32 KiB body limit, applies 2 requests/second with burst 5
+throttling, verifies Turnstile with a five-minute cached Secrets Manager value
+and a three-second Siteverify timeout, and sends SES mail only after
+verification. It logs outcome codes and request IDs without form data. The
+retired `/email` route, browser API key, API key resource, and usage plan are
+removed.
+
+Production uses `www.mcadamsdevelopment.com` as the canonical hostname. A
+CloudFront viewer-request function redirects the apex hostname to `www` before
+the Contact page or Turnstile widget loads; verification therefore requires the
+`www` hostname and action `contact`.
+
+Pull requests run the website build/validation workflow before merge, and the
+backend runs Lambda and CDK tests. Both production workflows deploy only after
+their checks pass. The remaining operational work is the one-week monitoring
+window for Lambda errors, API Gateway 4xx/5xx/throttles, SES sends, and
+Turnstile rejection outcomes.
+
 ## Why this approach
 
 ### Solution-page architecture
