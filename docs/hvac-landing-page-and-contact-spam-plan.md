@@ -13,9 +13,9 @@ contact backend before any email is sent. Add a honeypot and basic request
 throttling as complementary controls. Do not add runtime rendering or change
 the website hosting model.
 
-The contact API is not present in this repository. Frontend work can be
-completed here, but effective spam protection requires coordinated changes in
-the service currently configured by `VITE_API_URL`.
+The contact API is implemented in the separate `imcadams/email-service`
+repository. Frontend changes must be deployed only after its secure
+`POST /contact` endpoint is available.
 
 ## Why this approach
 
@@ -48,10 +48,9 @@ Turnstile is only effective when the backend verifies each token with
 Cloudflare's Siteverify API. Tokens are short-lived and single-use. The
 Turnstile secret must never be sent to or bundled into the browser.
 
-The current `VITE_EMAIL_API_KEY` pattern is not a security boundary. Every
-`VITE_` variable is compiled into public client assets. The existing key
-should be rotated, removed from the browser, and replaced with a public contact
-endpoint that performs validation and abuse controls on the server.
+Every `VITE_` variable is compiled into public client assets. The legacy
+browser API key must remain retired; the public contact endpoint performs
+validation and abuse controls on the server.
 
 ## Scope
 
@@ -129,12 +128,12 @@ contact form
 
 ### Phase 0: Secure the current contact boundary
 
-1. Identify the repository, runtime, and owner of the API behind
-   `VITE_API_URL`.
+1. Use the `imcadams/email-service` repository and its CDK stack as the
+   backend source of truth.
 2. Determine whether the existing endpoint is API Gateway and Lambda or
    another service.
-3. Rotate or revoke the value currently used as `VITE_EMAIL_API_KEY`. Treat it
-   as public because it has been included in browser bundles.
+3. Revoke the legacy API Gateway key because it was included in browser
+   bundles.
 4. Remove the requirement for a client-supplied API key from the contact
    endpoint.
 5. Confirm that the backend can make outbound HTTPS calls to Turnstile's
@@ -350,8 +349,8 @@ and infrastructure for the site's current scale.
    script, frame, and connection origins required by current provider
    guidance.
 3. Add `.env.example` entries for public frontend configuration only.
-4. Remove `VITE_EMAIL_API_KEY` from code, type declarations, README examples,
-   deployment secrets, and build configuration.
+4. Keep the legacy browser API key out of code, type declarations, README
+   examples, deployment secrets, and build configuration.
 5. Document the backend-only secret separately without including its value.
 6. Ensure production logs and analytics do not capture form content or
    challenge tokens.

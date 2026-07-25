@@ -12,14 +12,16 @@ export default defineConfig(({ mode }) => {
     plugins: [
       reactRouter(),
     ],
-    server: {
-      proxy: {
-        '/api': {
-          target: env.VITE_CONTACT_API_URL ?? env.VITE_API_URL,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
-        },
-      },
-    },
+    server: env.VITE_CONTACT_API_URL
+      ? {
+          proxy: {
+            '/api': {
+              target: env.VITE_CONTACT_API_URL,
+              changeOrigin: true,
+              rewrite: (path) => path.replace(/^\/api/, ''),
+            },
+          },
+        }
+      : undefined,
   }
 })
