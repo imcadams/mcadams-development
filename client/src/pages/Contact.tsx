@@ -29,7 +29,7 @@ function isSupportedSolution(value: string | null): value is (typeof supportedSo
 }
 
 function contactEndpoint() {
-  const baseUrl = import.meta.env.VITE_CONTACT_API_URL ?? import.meta.env.VITE_API_URL;
+  const baseUrl = import.meta.env.VITE_CONTACT_API_URL;
 
   if (!baseUrl) {
     throw new Error('The contact form is not configured. Please call or email us instead.');
